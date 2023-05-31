@@ -5,12 +5,12 @@ source './utils.sh'
 function set_default() {
 	# Set keymap
   message "[ loadkeys br-abnt2 ] Running command..."
-	# loadkeys br-abnt2
+	loadkeys br-abnt2
   message_success 'Keymap set to br-abnt2'
 
 	# Update system clock
   message "[ timedatectl ] Running command..."
-	# timedatectl
+	timedatectl
   message_success 'Updated system clock'
 }
 
@@ -24,4 +24,4 @@ function main() {
   first_init
 }
 
-main
+# main
