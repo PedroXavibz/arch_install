@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [[ $1 -gt 0 ]]; then
+	xbacklight -inc $1
+fi
+
+if [[ $1 -lt 0 ]]; then
+	xbacklight -dec $(($1 * -1))
+fi
+
+porcent=$(xbacklight -get)
+progress_bar="-h string:hlcolor:#f0f0f0 -h int:value:$porcent"
+
+notify-send -u low $progress_bar -t 1300 "BACKLIGHT"

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+selected=$(fd . $HOME ~/dev ~/src ~/.config/nvim ~/.config ~/scripts -H -t f --min-depth 1 --max-depth 2 | fzf)
+
+if [[ -z "$selected" ]]; then
+	return
+fi
+
+if [[ -d $selected ]]; then
+	cd $selected | nvim
+else
+	file_dirname=$(dirname $selected)
+	cd $file_dirname && nvim $selected
+fi

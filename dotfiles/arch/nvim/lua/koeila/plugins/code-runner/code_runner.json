@@ -1,0 +1,10 @@
+{
+  "javascript": "node",
+  "typescript": "deno run",
+  "python": "python3 -u",
+  "sh": "bash",
+  "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+  "rust": "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
+  "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt",
+  "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt"
+}

@@ -1,0 +1,50 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+	echo "Please select a wallpaper"
+	exit 1
+fi
+
+wallpaper=$(realpath $1)
+
+function select_screen() {
+    local monitor='0'
+
+  if [ ! $(xrandr --listactivemonitors | sed 1d | awk '{print NR,$4}' | wc -l) -eq 1 ]
+    then
+	    monitor="$(xrandr --listactivemonitors | sed 1d | awk '{print NR,$4}' | dmenu -i -p 'Screen: ' | awk '{print $1 - 1}')"
+  fi
+
+	echo $monitor
+}
+
+screen=$(select_screen)
+
+background_size='--set-auto'
+
+case $(printf "Auto\nScaled" | dmenu -i -p 'Size: ') in 
+  'Auto') background_size='--set-auto';;
+
+  'Scaled') background_size='--set-scaled';;
+esac
+
+nitrogen $background_size $wallpaper --head=$screen --save
+
+function change_colorscheme() {
+	wal -i $wallpaper -n
+	pywalfox update
+
+	notify-send "Colorscheme" "Recompiling dwm, dmenu and st with new colorscheme..."
+
+	local src_dir="$HOME/src"
+
+	(cd $src_dir/dwm && make clean install >/dev/null &)
+	(cd $src_dir/dmenu && make clean install >/dev/null &)
+	(cd $src_dir/st && make clean install >/dev/null &)
+
+}
+
+case "$(printf 'Yes\nNo' | dmenu -i -p 'Change colorscheme')" in
+'Yes') change_colorscheme ;;
+*) exit 1 ;;
+esac

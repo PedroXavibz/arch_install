@@ -1,0 +1,36 @@
+#!/bin/sh
+
+screen_to_record() {
+	monitor="$(xrandr --listactivemonitors | awk '{print $4}' | sed '1c\All' | dmenu -i -p 'Screen: ')"
+
+	xrandr | grep $monitor | sed 's/primary//' | awk '{print $3}'
+
+	# if [ $monitor == "all" ]; then
+	#
+	# fi
+
+	#ffmpeg -video_size 1366x768 -framerate 30 -f x11grab -i :0.0+1311,0+193 -c:v libx264rgb -crf 0 -preset ultrafast sample.mkv
+
+	if [ $1 == "screen" ]; then
+		# ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0+0,0 -c:v libx264rgb -crf 0 -preset ultrafast sample.mkv
+		echo "Just screen"
+	fi
+
+	if [ $1 == "screen audio" ]; then
+		echo "Screen and audio"
+	fi
+
+	# ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0+0,0 -f pulse -filter_complex amerge -ac 2 -i 0 -f pulse -ac 2 -i 1 -c:v libx264rgb -crf 0 -preset ultrafast sample.mkv
+}
+
+case "$(printf " Screen\n Screen and audio 墳" | dmenu -i -p 'Record: ')" in
+' Screen')
+	screen_to_record 'screen'
+	;;
+' Screen and audio 墳')
+	screen_to_record 'screen audio'
+	;;
+*)
+	exit 1
+	;;
+esac
