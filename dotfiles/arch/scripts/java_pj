@@ -1,8 +1,0 @@
-#!/bin/bash
-
-echo "===========[CREATE JAVA MVN PROJECT]==========="
-
-read -r -p "Project name: " project_name
-read -r -p "Group Id: " group_id
-
-mvn archetype:generate -DgroupId=$group_id -DartifactId=$project_name -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false -Dmaven.test.skip=true

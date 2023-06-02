@@ -1,8 +1,0 @@
-{
-  "~/Dev/rust/guess_game": {
-    "name": "Guess Game",
-    "description": "Guess gaming project from rust tutorial",
-    "file_name": "src/main.rs",
-    "command": "cargo build && cargo run"
-  }
-}

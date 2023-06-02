@@ -52,7 +52,7 @@ function pac_install_softwares() {
 		xorg-xinit neofetch fd picom bat ripgrep fzf sxhkd sxiv \
 		exa xf86-video-amdgpu xf86-video-ati mesa zathura bluez bluez-utils \
     pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer \
-    pulseaudio-jack pulseaudio-lirc --needed
+    pulseaudio-jack pulseaudio-lirc --needed --noconfirm
 
 	message_success "Sucessfull"
 }
