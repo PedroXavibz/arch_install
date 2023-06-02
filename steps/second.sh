@@ -58,7 +58,7 @@ function pac_install_softwares() {
 function create_user()  {
 	message "Creating user"
 
-  useradd -m -G adm lp sudo -s "$(which zsh)" koeila
+  useradd -m -G adm,wheel,lp -s "$(which zsh)" koeila
   passwd koeila
 
   # Edit sudoers
