@@ -112,5 +112,6 @@ function init_first() {
 	# 6
 	make_swapfile
 
-	message "_-_----__-_-_-___-_-----___- [ FINISH #1 ] _-_---__-_-_-___-_----__-"
+	message "_-_----__-_-_-___-_-----___- [ FINISH #1 ] _-_---__-_-_-___-_----__"
+  message "send this folder to the /mnt/root directory, then Excute arch-chroot"
 }

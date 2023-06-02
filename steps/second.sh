@@ -63,9 +63,7 @@ function create_user()  {
   useradd -m -G adm lp sudo -s "$(which zsh)" koeila
   passwd koeila
 
-	message "You must edit /etc/sudoers"
-  echo "#Allow members of group sudo to execute any command
-%sudo   ALL=(ALL:ALL) AL" >> /etc/sudoers
+  # Edit sudoers
   vim /etc/sudoers
 
 	message_success "Sucessfull"
@@ -73,34 +71,31 @@ function create_user()  {
 
 function init_second() {
 	# 1
-	arch-chroot /mnt
-
-	# 2
 	set_timezone
 
-	# 3
+	# 2
 	set_location
 
-	# 4
+	# 3
 	set_network
 
-	# 5
+	# 4
 	message "[ SET INITCPIO ]"
 	mkinitcpio -P
 	message_success "Sucessfull"
 
-	# 6
+	# 5
 	message "[ SET ROOT PASSWORD ]"
 	passwd
 	message_success "Sucessfull"
 
-	# 7
+	# 6
 	set_bootloader
 
-	# 8
+	# 7
 	pac_install_softwares
 
-  # 9
+  # 8
   create_user
 
 	message "_-_----__-_-_-___-_-----___- [ FINISH #2 ] _-_---__-_-_-___-_----__-"
