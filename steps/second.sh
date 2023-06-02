@@ -45,12 +45,13 @@ function pac_install_softwares() {
 	# TODO: chage pacman options and configure mirrors
 
 	# TODO: search packages
-	pacman -Sy python-pip firefox git networkmanager keepassxc ranger \
-		preload wget rust base-devel os-prober xorg-server xorg-apps \
+	pacman -Sy python-pip firefox git keepassxc ranger \
+		wget rust base-devel os-prober xorg-server xorg-apps \
 		xorg-xinit neofetch fd picom bat ripgrep fzf sxhkd sxiv \
 		exa xf86-video-amdgpu xf86-video-ati mesa zathura bluez bluez-utils \
     pulseaudio pulseaudio-alsa pulseaudio-bluetooth pulseaudio-equalizer \
-    pulseaudio-jack pulseaudio-lirc --needed --noconfirm
+    pulseaudio-jack pulseaudio-lirc networkmanager dhclient iwd \
+    dnsmasq firewalld modemmanager nftables openresolv ppp --needed --noconfirm
 
 	message_success "Sucessfull"
 }
