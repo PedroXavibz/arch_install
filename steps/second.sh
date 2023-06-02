@@ -28,8 +28,6 @@ function set_network() {
 	echo "127.0.0.1        localhost
 ::1              localhost
 127.0.1.1        archlinux" >>/etc/hosts
-	systemctl enable NetworkManager.service --now
-
 	message_success "Sucessfull"
 }
 
@@ -97,6 +95,9 @@ function init_second() {
 
   # 8
   create_user
+
+  # Enable services
+	systemctl enable NetworkManager.service --now
 
 	message "_-_----__-_-_-___-_-----___- [ FINISH #2 ] _-_---__-_-_-___-_----__-"
 }
