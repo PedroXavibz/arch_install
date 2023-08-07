@@ -45,7 +45,7 @@ function pac_install_softwares() {
 	# TODO: chage pacman options and configure mirrors
 
 	# TODO: search packages
-	pacman -Sy python-pip firefox git keepassxc ranger \
+	pacman -Sy python-pip firefox go git keepassxc ranger \
 		wget rust base-devel os-prober xorg-server xorg-apps \
 		xorg-xinit neofetch fd picom bat ripgrep fzf sxhkd sxiv \
 		exa xf86-video-amdgpu xf86-video-ati mesa zathura bluez bluez-utils \
