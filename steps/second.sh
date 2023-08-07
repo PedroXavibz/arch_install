@@ -57,7 +57,7 @@ function pac_install_softwares() {
 }
 
 function create_user()  {
-	message "Creating user"
+	message "Creating user Koeila"
 
 	useradd -m -G adm,wheel,lp -s "$(which zsh)" koeila
 	passwd koeila

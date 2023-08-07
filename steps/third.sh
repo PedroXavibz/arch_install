@@ -35,10 +35,20 @@ function set_communs() {
 	# Keyboard
 }
 
-function init_third() {
-  cargo_install
-  
-  yay_install_softwares
+function install_suckless() {
+	git clone https://git.suckless.org/dwm "$HOME/suckless/dwm"
 
-  set_communs
+	git clone https://git.suckless.org/st "$HOME/suckless/st"
+
+	git clone https://git.suckless.org/dmenu "$HOME/suckless/dmenu"
+}
+
+function init_third() {
+	install_suckless
+
+  # cargo_install
+  
+  # yay_install_softwares
+
+  # set_communs
 }
